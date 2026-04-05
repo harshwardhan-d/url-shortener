@@ -31,7 +31,7 @@ export default function UrlShortenerUI() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ originalUrl: longUrl }),
-        },
+        }
       );
       const data = await res.json();
       setShortUrl(data.shortUrl);
@@ -45,14 +45,9 @@ export default function UrlShortenerUI() {
   };
 
   return (
-    <Box
-      minH="100vh"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      px={4}
-    >
+    <Box minH="100vh" bg="gray.50" display="flex" alignItems="center" justifyContent="center" px={4}>
       <VStack w="full" maxW="480px" spacing={5}>
+
         <VStack spacing={1} textAlign="center">
           <Heading fontSize="2xl" fontWeight="700" letterSpacing="-0.5px">
             URL Shortener
@@ -62,22 +57,9 @@ export default function UrlShortenerUI() {
           </Text>
         </VStack>
 
-        <Box
-          w="full"
-          bg="white"
-          border="1px solid"
-          borderColor="gray.200"
-          borderRadius="2xl"
-          p={5}
-        >
+        <Box w="full" bg="white" border="1px solid" borderColor="gray.200" borderRadius="2xl" p={5}>
           <VStack spacing={3} align="stretch">
-            <Text
-              fontSize="xs"
-              fontWeight="600"
-              color="gray.500"
-              textTransform="uppercase"
-              letterSpacing="0.05em"
-            >
+            <Text fontSize="xs" fontWeight="600" color="gray.500" textTransform="uppercase" letterSpacing="0.05em">
               Long URL
             </Text>
             <Input
@@ -90,66 +72,26 @@ export default function UrlShortenerUI() {
               fontSize="sm"
               color="gray.800"
             />
-            <Button
-              bg="gray.900"
-              color="white"
-              _hover={{ bg: "gray.700" }}
-              borderRadius="lg"
-              fontWeight="600"
-              onClick={handleSubmit}
-            >
+            <Button bg="gray.900" color="white" _hover={{ bg: "gray.700" }} borderRadius="lg" fontWeight="600" onClick={handleSubmit}>
               Shorten URL
             </Button>
           </VStack>
         </Box>
 
         {error && (
-          <Box
-            w="full"
-            bg="red.50"
-            border="1px solid"
-            borderColor="red.200"
-            borderRadius="xl"
-            px={4}
-            py={3}
-          >
-            <Text fontSize="sm" color="red.600">
-              {error}
-            </Text>
+          <Box w="full" bg="red.50" border="1px solid" borderColor="red.200" borderRadius="xl" px={4} py={3}>
+            <Text fontSize="sm" color="red.600">{error}</Text>
           </Box>
         )}
 
         {shortUrl && (
-          <Box
-            w="full"
-            bg="white"
-            border="1px solid"
-            borderColor="green.200"
-            borderRadius="2xl"
-            p={5}
-          >
+          <Box w="full" bg="white" border="1px solid" borderColor="green.200" borderRadius="2xl" p={5}>
             <VStack spacing={3} align="stretch">
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="space-between"
-              >
-                <Text
-                  fontSize="xs"
-                  fontWeight="600"
-                  color="gray.500"
-                  textTransform="uppercase"
-                  letterSpacing="0.05em"
-                >
+              <Box display="flex" alignItems="center" justifyContent="space-between">
+                <Text fontSize="xs" fontWeight="600" color="gray.500" textTransform="uppercase" letterSpacing="0.05em">
                   Your short URL
                 </Text>
-                <Badge
-                  colorScheme="green"
-                  borderRadius="full"
-                  px={3}
-                  py={1}
-                  fontSize="xs"
-                >
+                <Badge colorScheme="green" borderRadius="full" px={3} py={1} fontSize="xs">
                   Ready
                 </Badge>
               </Box>
@@ -164,17 +106,7 @@ export default function UrlShortenerUI() {
                   borderRadius="lg"
                   color="gray.800"
                 />
-                <Button
-                  size="sm"
-                  fontSize="xs"
-                  bg="gray.900"
-                  color="white"
-                  _hover={{ bg: "gray.700" }}
-                  borderRadius="md"
-                  flexShrink={0}
-                  px={4}
-                  onClick={handleCopy}
-                >
+                <Button size="sm" fontSize="xs" bg="gray.900" color="white" _hover={{ bg: "gray.700" }} borderRadius="md" flexShrink={0} px={4} onClick={handleCopy}>
                   Copy
                 </Button>
               </Box>
@@ -185,6 +117,7 @@ export default function UrlShortenerUI() {
             </VStack>
           </Box>
         )}
+
       </VStack>
     </Box>
   );

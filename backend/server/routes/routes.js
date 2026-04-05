@@ -17,13 +17,13 @@ router.post("/shorten", async (req, res) => {
 
     const existing = await Url.findOne({ originalUrl })
     if (existing) {
-      return res.json({ shortUrl: `http://localhost:3000/${existing.shortCode}` })
+      return res.json({ shortUrl: `https://url-shortener-zd21.onrender.com/${existing.shortCode}` })
     }
 
     const shortCode = nanoid(6)
     await Url.create({ shortCode, originalUrl })
 
-    res.json({ shortUrl: `http://localhost:3000/${shortCode}` })
+    res.json({ shortUrl: `https://url-shortener-zd21.onrender.com/${shortCode}` })
 
   } catch (err) {
     res.status(500).json({ message: "Server error" })
