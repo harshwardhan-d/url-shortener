@@ -25,11 +25,14 @@ export default function UrlShortenerUI() {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/api/shorten", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ originalUrl: longUrl }),
-      });
+      const res = await fetch(
+        "https://url-shortener-zd21.onrender.com/api/shorten",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ originalUrl: longUrl }),
+        },
+      );
       const data = await res.json();
       setShortUrl(data.shortUrl);
     } catch (err) {
